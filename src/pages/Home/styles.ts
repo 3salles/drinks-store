@@ -31,3 +31,11 @@ export const NewDrinkButton = styled.button`
   color: var(--white);
   font-size: 1.125rem;
 `
+
+export const Content= styled.article`
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`

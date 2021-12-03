@@ -1,8 +1,10 @@
 import { BiPlusMedical } from 'react-icons/bi'
 
-import { Container, Header, HeaderContainer, NewDrinkButton } from "./styles";
+import { Container, Header, HeaderContainer, NewDrinkButton, Content } from "./styles";
 import Logo from "../../assets/logo.png";
+
 import { CountriesSelect } from '../../components/Select';
+import { Card } from '../../components/Card';
 
 
 export const Home = (): JSX.Element => {
@@ -20,7 +22,13 @@ export const Home = (): JSX.Element => {
             <span>Adicionar bebida</span>
           </NewDrinkButton>
         </HeaderContainer>
-        <article></article>
+        <Content>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </Content>
       </Container>
     </>
   );
