@@ -2,7 +2,10 @@ import {  css } from "@emotion/react";
 
 export const  GlobalStyle = css`
   :root {
-    --background: #E7E9EE;
+    --white: #ffffff;
+    --gray-100: #E7E9EE;
+    --pink-300: #EE5B96;
+    --pink-500: #8B0E40;
   }
   * {
     margin: 0;
@@ -18,11 +21,11 @@ export const  GlobalStyle = css`
     }
   }
   body {
-    background: var(--background);
+    background: var(--gray-100);
     -webkit-font-smoothing: antialiased;
   }
   border-style, input, textarea, button {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'M PLUS 1', sans-serif;
     font-weight: 400;
   }
   h1, h2, h3, h4, h5, h6, strong {
