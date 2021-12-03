@@ -6,8 +6,13 @@ import Logo from "../../assets/logo.png";
 import { CountriesSelect } from '../../components/Select';
 import { Card } from '../../components/Card';
 
+import drinks from '../../utils/drinks.json'
+import { Drink } from '../../models';
+
 
 export const Home = (): JSX.Element => {
+  const data = drinks as Drink[];
+
   return (
     <>
       <Header>
@@ -23,11 +28,11 @@ export const Home = (): JSX.Element => {
           </NewDrinkButton>
         </HeaderContainer>
         <Content>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {
+            data?.map((drink, index) => 
+              <Card key={index} drink={drink} />
+              )
+          }
         </Content>
       </Container>
     </>

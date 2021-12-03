@@ -1,0 +1,22 @@
+[
+  {
+    "id": 0,
+    "name": "Cerva BR",
+    "brand": "BR"
+  },
+  {
+    "id": 1,
+    "name": "Vinho FR",
+    "brand": "FR"
+  },
+  {
+    "id": 2,
+    "name": "Batida gelada",
+    "brand": "VE"
+  },
+  {
+    "id": 0,
+    "name": "Sake",
+    "brand": "JP"
+  }
+]

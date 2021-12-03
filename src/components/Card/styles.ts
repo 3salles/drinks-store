@@ -9,6 +9,7 @@ export const Container = styled.div`
 
 export const ImageContainer = styled.div`
   width: 100%;
+  height: 12.5rem;
   
   img {
     border-radius: 0.5rem 0.5rem 0 0;
@@ -19,12 +20,17 @@ export const ImageContainer = styled.div`
 `
 
 export const Infos = styled.div`
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 1rem 2rem;
 
   h4 {
-    font-size: large;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+  }
+
+  p {
+    white-space: nowrap;
+    text-align: center;
+    font-size: 1.25rem;
   }
 `
