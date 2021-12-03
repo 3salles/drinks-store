@@ -1,12 +1,13 @@
 import ReactFlagsSelect from "react-flags-select";
 import { useState } from "react";
 
-export function CountriesSelect() {
+
+export function BrandSelect() {
   const [selected, setSelected] = useState("");
   console.log(selected)
   return (
     <ReactFlagsSelect
-      fullWidth={true}
+      className="flags-select"
       selected={selected}
       onSelect={(code) => setSelected(code)}
       countries={["BR", "FR", "JP","VE"]}
