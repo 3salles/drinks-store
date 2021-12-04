@@ -4,7 +4,6 @@ import { BrandSelect } from "../BrandSelect";
 import { Container, Content, DrinkNameContainer, SaveButton } from "./styles";
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { Brands } from "../../models";
-import { api } from "../../services/api";
 import { DrinksContext } from "../../hooks/DrinksContext";
 
 interface NewDrinkModalProps {
