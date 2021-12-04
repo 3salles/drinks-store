@@ -6,6 +6,7 @@ import {
   HeaderContainer,
   NewDrinkButton,
   Content,
+  FilterButton,
 } from "./styles";
 import Logo from "../../assets/logo.png";
 
@@ -32,6 +33,13 @@ export const Home = ({ onOpenModal }: HomeProps): JSX.Element => {
         <HeaderContainer>
           <h1>Bebidas</h1>
           <BrandSelect selected={selected} setSelected={setSelected} />
+          {selected && <FilterButton
+            type="button"
+            aria-label="Limpar filtro"
+            onClick={() => setSelected("")}
+          >
+            Limpar filtro
+          </FilterButton>}
           <NewDrinkButton
             type="button"
             aria-label="Adicionar bebida"
@@ -42,9 +50,11 @@ export const Home = ({ onOpenModal }: HomeProps): JSX.Element => {
           </NewDrinkButton>
         </HeaderContainer>
         <Content>
-          {drinks?.map((drink) => (
-            <Card key={drink.id} drink={drink} />
-          ))}
+          {selected === ""
+            ? drinks?.map((drink) => <Card key={drink.id} drink={drink} />)
+            : drinks
+                ?.filter((drinksFilter) => drinksFilter.brand === selected)
+                .map((drink) => <Card key={drink.id} drink={drink} />)}
         </Content>
       </Container>
     </>

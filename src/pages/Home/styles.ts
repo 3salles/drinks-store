@@ -39,3 +39,16 @@ export const Content= styled.article`
   justify-content: space-between;
   flex-wrap: wrap;
 `
+
+export const FilterButton = styled.button`
+  height: 2rem;
+  padding: 1rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--pink-300);
+  color: var(--pink-300);
+  font-size: 1.125rem;
+`
