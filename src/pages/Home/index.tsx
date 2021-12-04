@@ -22,7 +22,7 @@ interface HomeProps {
 export const Home = ({ onOpenModal }: HomeProps): JSX.Element => {
   const drinks = useContext(DrinksContext);
   const [selected, setSelected] = useState("")
-
+  
   return (
     <>
       <Header>
@@ -43,7 +43,7 @@ export const Home = ({ onOpenModal }: HomeProps): JSX.Element => {
         </HeaderContainer>
         <Content>
           {drinks?.map((drink) => (
-            <Card key={drink?.id} drink={drink} />
+            <Card key={drink.id} drink={drink} />
           ))}
         </Content>
       </Container>

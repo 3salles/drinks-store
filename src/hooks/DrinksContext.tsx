@@ -12,7 +12,7 @@ export function DrinksProvider({ children }: DrinksProviderProps) {
   const [drinks, setDrinks] = useState<Drink[]>([]);
 
   useEffect(() => {
-    api.get("drinks").then((response) => setDrinks(response.data));
+    api.get("drinks").then((response) => setDrinks(response.data.drinks));
   }, []);
 
   return (

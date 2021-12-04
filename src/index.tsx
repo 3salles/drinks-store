@@ -1,40 +1,56 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "./App";
-import { createServer } from "miragejs";
+import { createServer, Model } from "miragejs";
 import reportWebVitals from "./reportWebVitals";
 
 createServer({
-  routes() {
-    this.namespace = 'api'
+  models: {
+    drink: Model,
+  },
 
-    this.get('/drinks', () => {
-      return [
+  seeds(server){
+    server.db.loadData({
+      drinks: [
         {
           id: 1,
           name: 'Cerva',
           brand: 'BR',
-          createdAt: new Date()
+          createdAt: new Date('2021-02-12 09:00:00')
         }, 
         {
           id: 2,
           name: 'Vinho',
           brand: 'FR',
-          createdAt: new Date()
+          createdAt: new Date('2021-02-12 09:00:00')
         },
         {
           id: 3,
           name: 'Batida gelada',
           brand: 'VE',
-          createdAt: new Date()
+          createdAt: new Date('2021-02-12 09:00:00')
         },
         {
           id: 4,
           name: 'Sake',
           brand: 'JP',
-          createdAt: new Date()
+          createdAt: new Date('2021-02-12 09:00:00')
         }
-      ]
+      ],
+    })
+  },
+
+  routes() {
+    this.namespace = 'api'
+
+    this.get('/drinks', () => {
+      return this.schema.all('drink')
+    })
+
+    this.post('/drinks', (schema, request) => {
+      const data = JSON.parse(request.requestBody)
+
+      return schema.create('drink', data);
     })
   }
 })

@@ -23,6 +23,8 @@ export function NewDrinkModal({ isOpen, onCloseModal }: NewDrinkModalProps) {
       brand,
       name
     }
+
+    api.post('/drinks', data)
     
     setBrand("");
     setName("");
