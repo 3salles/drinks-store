@@ -2,9 +2,9 @@ import Modal from "react-modal";
 import { GrClose } from "react-icons/gr";
 import { BrandSelect } from "../BrandSelect";
 import { Container, Content, DrinkNameContainer, SaveButton } from "./styles";
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Brands } from "../../models";
-import { DrinksContext } from "../../hooks/DrinksContext";
+import { useDrinks } from "../../hooks/useDrinks";
 
 interface NewDrinkModalProps {
   isOpen: boolean;
@@ -12,7 +12,7 @@ interface NewDrinkModalProps {
 }
 
 export function NewDrinkModal({ isOpen, onCloseModal }: NewDrinkModalProps) {
-  const { createDrink } = useContext(DrinksContext);
+  const { createDrink } = useDrinks();
   const [brand, setBrand] = useState<Brands>("");
   const [name, setName] = useState("");
 

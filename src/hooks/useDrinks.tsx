@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { Drink } from "../models";
 import { api } from "../services/api";
 
@@ -13,7 +13,7 @@ interface DrinksContextData {
 
 type DrinkInput = Omit<Drink, "id" | "createdAt">;
 
-export const DrinksContext = createContext<DrinksContextData>(
+const DrinksContext = createContext<DrinksContextData>(
   {} as DrinksContextData
 );
 
@@ -42,4 +42,9 @@ export function DrinksProvider({ children }: DrinksProviderProps) {
       {children}
     </DrinksContext.Provider>
   );
+}
+
+export function useDrinks() {
+  const context = useContext(DrinksContext)
+  return context
 }

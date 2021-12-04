@@ -2,9 +2,10 @@ import { Home } from "../src/pages/Home";
 import { Global } from "@emotion/react";
 import { GlobalStyle } from "./styles/global";
 import Modal from "react-modal";
-import { DrinksProvider } from "./hooks/DrinksContext";
+
 import { NewDrinkModal } from "./components/Modal";
 import { useState } from "react";
+import { DrinksProvider } from "./hooks/useDrinks";
 
 Modal.setAppElement("#root");
 
