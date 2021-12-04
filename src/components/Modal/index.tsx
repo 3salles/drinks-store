@@ -1,31 +1,30 @@
 import Modal from "react-modal";
 import { GrClose } from "react-icons/gr";
 import { BrandSelect } from "../BrandSelect";
-import { Container, Content, DrinkNameContainer, SaveButton } from './styles'
-import { ChangeEvent, FormEvent, useState } from "react";
+import { Container, Content, DrinkNameContainer, SaveButton } from "./styles";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { Brands } from "../../models";
 import { api } from "../../services/api";
+import { DrinksContext } from "../../hooks/DrinksContext";
 
 interface NewDrinkModalProps {
   isOpen: boolean;
   onCloseModal: () => void;
 }
 
-
 export function NewDrinkModal({ isOpen, onCloseModal }: NewDrinkModalProps) {
-  const [brand, setBrand] = useState<Brands>('')
-  const [name, setName] = useState('')
+  const { createDrink } = useContext(DrinksContext);
+  const [brand, setBrand] = useState<Brands>("");
+  const [name, setName] = useState("");
 
   function handleCreateNewDrink(event: FormEvent) {
     event.preventDefault();
 
-    const data = {
+    createDrink({
       brand,
-      name
-    }
+      name,
+    });
 
-    api.post('/drinks', data)
-    
     setBrand("");
     setName("");
   }
@@ -53,7 +52,7 @@ export function NewDrinkModal({ isOpen, onCloseModal }: NewDrinkModalProps) {
         <h2>Nova Bebida</h2>
 
         <Content>
-        <BrandSelect selected={brand} setSelected={setBrand} />
+          <BrandSelect selected={brand} setSelected={setBrand} />
           <DrinkNameContainer>
             <label htmlFor="drink-name">Nome da bebida</label>
             <input
@@ -62,7 +61,9 @@ export function NewDrinkModal({ isOpen, onCloseModal }: NewDrinkModalProps) {
               id="drink-name"
               placeholder="Digite nome da bebida"
               value={name}
-              onChange={(event: ChangeEvent<HTMLInputElement>) => setName(event.target.value)}
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                setName(event.target.value)
+              }
             />
           </DrinkNameContainer>
           <SaveButton type="submit" aria-label="Cadastrar nova bebida">

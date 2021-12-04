@@ -11,7 +11,7 @@ import Logo from "../../assets/logo.png";
 
 import { Card } from "../../components/Card";
 
-import { useContext, useState} from "react";
+import { useContext, useState } from "react";
 import { BrandSelect } from "../../components/BrandSelect";
 import { DrinksContext } from "../../hooks/DrinksContext";
 
@@ -20,9 +20,9 @@ interface HomeProps {
 }
 
 export const Home = ({ onOpenModal }: HomeProps): JSX.Element => {
-  const drinks = useContext(DrinksContext);
-  const [selected, setSelected] = useState("")
-  
+  const { drinks } = useContext(DrinksContext);
+  const [selected, setSelected] = useState("");
+
   return (
     <>
       <Header>
