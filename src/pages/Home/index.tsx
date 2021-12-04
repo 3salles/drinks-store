@@ -11,7 +11,7 @@ import Logo from "../../assets/logo.png";
 
 import { Card } from "../../components/Card";
 
-import { useContext} from "react";
+import { useContext, useState} from "react";
 import { BrandSelect } from "../../components/BrandSelect";
 import { DrinksContext } from "../../hooks/DrinksContext";
 
@@ -21,7 +21,7 @@ interface HomeProps {
 
 export const Home = ({ onOpenModal }: HomeProps): JSX.Element => {
   const drinks = useContext(DrinksContext);
-  console.log(drinks);
+  const [selected, setSelected] = useState("")
 
   return (
     <>
@@ -31,7 +31,7 @@ export const Home = ({ onOpenModal }: HomeProps): JSX.Element => {
       <Container role="main">
         <HeaderContainer>
           <h1>Bebidas</h1>
-          <BrandSelect />
+          <BrandSelect selected={selected} setSelected={setSelected} />
           <NewDrinkButton
             type="button"
             aria-label="Adicionar bebida"
