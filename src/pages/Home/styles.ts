@@ -18,6 +18,12 @@ export const HeaderContainer = styled.header`
   h1 {
     font-size: 2rem;
   }
+
+  @media(max-width: 768px){
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
 `
 
 export const NewDrinkButton = styled.button`
@@ -30,14 +36,20 @@ export const NewDrinkButton = styled.button`
   border-radius: 0.5rem;
   color: var(--white);
   font-size: 1.125rem;
+
+  
 `
 
-export const Content= styled.article`
+export const Content = styled.article`
   padding: 2rem 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
   flex-wrap: wrap;
+
+  @media(max-width: 768px){
+    justify-content: center;
+  }
 `
 
 export const FilterButton = styled.button`
