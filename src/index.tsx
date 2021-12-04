@@ -12,8 +12,26 @@ createServer({
       return [
         {
           id: 1,
-          nameDrink: 'Cerva BR',
+          name: 'Cerva',
           brand: 'BR',
+          createdAt: new Date()
+        }, 
+        {
+          id: 2,
+          name: 'Vinho',
+          brand: 'FR',
+          createdAt: new Date()
+        },
+        {
+          id: 3,
+          name: 'Batida gelada',
+          brand: 'VE',
+          createdAt: new Date()
+        },
+        {
+          id: 4,
+          name: 'Sake',
+          brand: 'JP',
           createdAt: new Date()
         }
       ]

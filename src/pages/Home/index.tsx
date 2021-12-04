@@ -11,15 +11,14 @@ import Logo from "../../assets/logo.png";
 
 import { Card } from "../../components/Card";
 
-import drinks from "../../utils/drinks.json";
-import { Drink } from "../../models";
 import { NewDrinkModal } from "../../components/Modal";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { BrandSelect } from "../../components/BrandSelect";
-import { api } from "../../services/api";
+import { DrinksContext } from "../../hooks/DrinksContext";
 
 export const Home = (): JSX.Element => {
-  const data = drinks as Drink[];
+  const drinks = useContext(DrinksContext);
+  console.log(drinks);
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,11 +29,6 @@ export const Home = (): JSX.Element => {
   function handleCloseModal() {
     setIsOpen(false);
   }
-
-  useEffect(() => {
-    api.get("drinks")
-      .then((response) => console.log(response.data));
-  }, []);
 
   return (
     <>
@@ -55,8 +49,8 @@ export const Home = (): JSX.Element => {
           </NewDrinkButton>
         </HeaderContainer>
         <Content>
-          {data?.map((drink, index) => (
-            <Card key={index} drink={drink} />
+          {drinks?.map((drink) => (
+            <Card key={drink?.id} drink={drink} />
           ))}
         </Content>
         <NewDrinkModal isOpen={modalIsOpen} onCloseModal={handleCloseModal} />
