@@ -1,14 +1,28 @@
-import { Home } from '../src/pages/Home';
-import { Global } from '@emotion/react';
-import { GlobalStyle } from './styles/global';
-import Modal from 'react-modal';
-import { DrinksProvider } from './hooks/DrinksContext';
+import { Home } from "../src/pages/Home";
+import { Global } from "@emotion/react";
+import { GlobalStyle } from "./styles/global";
+import Modal from "react-modal";
+import { DrinksProvider } from "./hooks/DrinksContext";
+import { NewDrinkModal } from "./components/Modal";
+import { useState } from "react";
 
 Modal.setAppElement("#root");
 
-export const App = (): JSX.Element => (
-  <DrinksProvider>
-  <Global styles={GlobalStyle} />
-    <Home />
-  </DrinksProvider>
-);
+export function App() {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function handleOpenModal() {
+    setIsOpen(true);
+  }
+
+  function handleCloseModal() {
+    setIsOpen(false);
+  }
+  return (
+    <DrinksProvider>
+      <Global styles={GlobalStyle} />
+      <Home onOpenModal={handleOpenModal} />
+      <NewDrinkModal isOpen={modalIsOpen} onCloseModal={handleCloseModal} />
+    </DrinksProvider>
+  );
+}

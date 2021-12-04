@@ -11,24 +11,17 @@ import Logo from "../../assets/logo.png";
 
 import { Card } from "../../components/Card";
 
-import { NewDrinkModal } from "../../components/Modal";
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { BrandSelect } from "../../components/BrandSelect";
 import { DrinksContext } from "../../hooks/DrinksContext";
 
-export const Home = (): JSX.Element => {
+interface HomeProps {
+  onOpenModal: () => void;
+}
+
+export const Home = ({ onOpenModal }: HomeProps): JSX.Element => {
   const drinks = useContext(DrinksContext);
   console.log(drinks);
-
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  function handleOpenModal() {
-    setIsOpen(true);
-  }
-
-  function handleCloseModal() {
-    setIsOpen(false);
-  }
 
   return (
     <>
@@ -42,7 +35,7 @@ export const Home = (): JSX.Element => {
           <NewDrinkButton
             type="button"
             aria-label="Adicionar bebida"
-            onClick={handleOpenModal}
+            onClick={onOpenModal}
           >
             <BiPlusMedical />
             <span>Adicionar bebida</span>
@@ -53,7 +46,6 @@ export const Home = (): JSX.Element => {
             <Card key={drink?.id} drink={drink} />
           ))}
         </Content>
-        <NewDrinkModal isOpen={modalIsOpen} onCloseModal={handleCloseModal} />
       </Container>
     </>
   );
