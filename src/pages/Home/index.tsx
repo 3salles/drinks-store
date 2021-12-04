@@ -15,7 +15,6 @@ import { useState } from "react";
 import { BrandSelect } from "../../components/BrandSelect";
 import { useDrinks } from "../../hooks/useDrinks";
 
-
 interface HomeProps {
   onOpenModal: () => void;
 }

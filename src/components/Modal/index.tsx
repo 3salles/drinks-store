@@ -5,6 +5,8 @@ import { Container, Content, DrinkNameContainer, SaveButton } from "./styles";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Brands } from "../../models";
 import { useDrinks } from "../../hooks/useDrinks";
+import toast from 'react-hot-toast';
+
 
 interface NewDrinkModalProps {
   isOpen: boolean;
@@ -17,7 +19,8 @@ export function NewDrinkModal({ isOpen, onCloseModal }: NewDrinkModalProps) {
   const [name, setName] = useState("");
 
   async function handleCreateNewDrink(event: FormEvent) {
-    event.preventDefault();
+    try{
+      event.preventDefault();
 
     await createDrink({
       brand,
@@ -27,6 +30,10 @@ export function NewDrinkModal({ isOpen, onCloseModal }: NewDrinkModalProps) {
     setBrand("");
     setName("");
     onCloseModal();
+    toast.success("Nova bebida cadastrada!")
+    } catch(error) {
+      toast.error("Ocorreu um erro!")
+    }
   }
 
   return (
