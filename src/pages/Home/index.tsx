@@ -14,8 +14,9 @@ import { Card } from "../../components/Card";
 import drinks from "../../utils/drinks.json";
 import { Drink } from "../../models";
 import { NewDrinkModal } from "../../components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrandSelect } from "../../components/BrandSelect";
+import { api } from "../../services/api";
 
 export const Home = (): JSX.Element => {
   const data = drinks as Drink[];
@@ -30,6 +31,11 @@ export const Home = (): JSX.Element => {
     setIsOpen(false);
   }
 
+  useEffect(() => {
+    api.get("drinks")
+      .then((response) => console.log(response.data));
+  }, []);
+
   return (
     <>
       <Header>
@@ -39,7 +45,11 @@ export const Home = (): JSX.Element => {
         <HeaderContainer>
           <h1>Bebidas</h1>
           <BrandSelect />
-          <NewDrinkButton type="button" aria-label="Adicionar bebida" onClick={handleOpenModal}>
+          <NewDrinkButton
+            type="button"
+            aria-label="Adicionar bebida"
+            onClick={handleOpenModal}
+          >
             <BiPlusMedical />
             <span>Adicionar bebida</span>
           </NewDrinkButton>
