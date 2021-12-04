@@ -17,16 +17,17 @@ export function NewDrinkModal({ isOpen, onCloseModal }: NewDrinkModalProps) {
   const [brand, setBrand] = useState<Brands>("");
   const [name, setName] = useState("");
 
-  function handleCreateNewDrink(event: FormEvent) {
+  async function handleCreateNewDrink(event: FormEvent) {
     event.preventDefault();
 
-    createDrink({
+    await createDrink({
       brand,
       name,
     });
 
     setBrand("");
     setName("");
+    onCloseModal();
   }
 
   return (

@@ -8,7 +8,7 @@ interface DrinksProviderProps {
 
 interface DrinksContextData {
   drinks: Drink[];
-  createDrink: (drink: DrinkInput) => void;
+  createDrink: (drink: DrinkInput) => Promise<void>;
 }
 
 type DrinkInput = Omit<Drink, "id" | "createdAt">;
@@ -24,8 +24,17 @@ export function DrinksProvider({ children }: DrinksProviderProps) {
     api.get("drinks").then((response) => setDrinks(response.data.drinks));
   }, []);
 
-  function createDrink(drink: DrinkInput) {
-    api.post("/drinks", drink);
+  async function createDrink(drinkInput: DrinkInput) {
+    const response = await api.post("/drinks", {
+      ...drinkInput,
+      createdAt: new Date(),
+    });
+    const { drink } = response.data
+
+    setDrinks([
+      ...drinks,
+      drink,
+    ])
   }
 
   return (
